@@ -8,6 +8,10 @@
     <link rel="icon" type="image/x-icon" href="assets/images/logo.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+
     <style>
         body {
             background-color: #f2f2f2;
@@ -140,6 +144,21 @@
                                         <strong>Total Emissions for the Route:</strong> 50 kg of CO2
                                     </p>
                                 </div>
+                                <div class="card bg-light pt-3 ps-3 pe-3 mt-3">
+                                    <h5>Route 2</h5>
+                                    <p>
+                                        <strong>Toyota, Camry, 2023</strong><br><br>
+                                        <strong>Route mileage:</strong> 150 miles<br>
+                                        <strong>Fuel consumption:</strong> 30 miles per gallon (mpg)<br>
+                                        <strong>Fuel cost:</strong> £1.40
+                                    </p>
+                                    <p>
+                                        <strong>Total Fuel Consumption for the Route:</strong> 5 gallons<br>
+                                        <strong>Total Fuel Cost for the Route:</strong> £7.00<br>
+                                        <strong>Total Emissions for the Route:</strong> 75 kg of CO2
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -151,8 +170,8 @@
                         <div class="card-body">
                             <h3>Export data</h3>
                             <div class="mt-3">
-                                <button type="button" class="btn btn-danger">PDF file</button>
-                                <button type="button" class="btn btn-success">CSV file</button>
+                                <button type="button" class="btn btn-danger" onclick="generatePDF()">PDF file</button>
+                                <button type="button" class="btn btn-success" onclick="generateCSV()">CSV file</button>
                             </div>
                         </div>
                     </div>
@@ -162,5 +181,88 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Define the data
+    let data = [
+        ["Route", "Vehicle", "Route Mileage", "Fuel Consumption (mpg)", "Fuel Cost (£)", "Total Fuel Consumption (gallons)", "Total Fuel Cost (£)", "Total Emissions (kg CO2)"],
+        ["1", "Ford, Transit, 2018", "200 miles", "25", "£1.30", "8", "£10.40", "50"],
+        ["2", "Toyota, Camry, 2023", "150 miles", "30", "£1.40", "5", "£7.00", "75"]
+    ];
+
+    function generatePDF() {
+        // Create a new jsPDF instance
+        const doc = new jspdf.jsPDF();
+
+        // Set up initial y position for the table
+        let y = 10;
+
+        // Add title
+        doc.setFontSize(18);
+        doc.text("Route Information Report", 70, y);
+        y += 10;
+
+        // Add table
+        doc.setFontSize(12);
+        const table = doc.autoTable({
+            startY: y,
+            head: [data[0]],
+            body: data.slice(1)
+        });
+
+        // Update y position to start after the table ends
+        y = table.lastAutoTable.finalY + 20;
+
+        // Calculate additional report points
+        const totalFuelConsumption = data.slice(1).reduce((acc, row) => acc + parseFloat(row[5]), 0);
+        const totalFuelCost = data.slice(1).reduce((acc, row) => acc + parseFloat(row[6].substring(1)), 0);
+        const totalEmissions = data.slice(1).reduce((acc, row) => acc + parseFloat(row[7]), 0);
+        const totalRouteMileage = data.slice(1).reduce((acc, row) => acc + parseFloat(row[2].split(" ")[0]), 0);
+
+        const avgFuelConsumption = totalFuelConsumption / totalRouteMileage;
+        const avgFuelCostPerMile = totalFuelCost / totalRouteMileage;
+        const avgEmissionsPerMile = totalEmissions / totalRouteMileage;
+        const costPerEmission = totalFuelCost / totalEmissions;
+        const fuelEfficiency = totalRouteMileage / totalFuelConsumption;
+
+        // Add report points
+        doc.setFontSize(14);
+        doc.text("Report Points:", 10, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.text(`Total Spend: £${totalFuelCost.toFixed(2)}`, 10, y);
+        y += 10;
+        doc.text(`Average Fuel Consumption: ${avgFuelConsumption.toFixed(2)} gallons per mile`, 10, y);
+        y += 10;
+        doc.text(`Average Fuel Cost per Mile: £${avgFuelCostPerMile.toFixed(2)}`, 10, y);
+        y += 10;
+        doc.text(`Average Emissions per Mile: ${avgEmissionsPerMile.toFixed(2)} kg CO2 per mile`, 10, y);
+        y += 10;
+        doc.text(`Cost per Emission: £${costPerEmission.toFixed(2)} per kg CO2`, 10, y);
+        y += 10;
+        doc.text(`Fuel Efficiency: ${fuelEfficiency.toFixed(2)} miles per gallon`, 10, y);
+
+        // Save the PDF
+        doc.save("route_information_report.pdf");
+    }
+
+</script>
+
+<script>
+    function generateCSV() {
+        // Convert data to CSV format
+        const csvContent = "data:text/csv;charset=utf-8," + data.map(row => row.join(",")).join("\n");
+
+        // Create a link element and set its attributes
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "route_information.csv");
+
+        // Append the link to the document body and trigger the click event to start the download
+        document.body.appendChild(link);
+        link.click();
+    }
+</script>
 
 </body>

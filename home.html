@@ -8,6 +8,16 @@
     <link rel="icon" type="image/x-icon" href="assets/images/logo.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .card {
+            border: none; /* Remove border */
+        }
+    </style>
+
 </head>
 
 <body>
@@ -15,7 +25,7 @@
     <div class="row flex-grow-1">
         <div class="col-3 bg-light p-4 d-flex flex-column overflow-auto shadow" style="height: 100vh">
             <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-                <img src="assets/images/logo-black.png" width="50px" height="50px">
+                <img src="assets/images/Logo.png" width="50px" height="50px">
                 <span class="mx-3 fs-5">EnviroScan</span>
             </div>
             <hr>
@@ -39,13 +49,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-link link-dark">
+                    <a href="monitoring.html" class="nav-link link-dark">
                         <i class="bi bi-graph-up"></i>
                         Carbon Emission Monitoring
                     </a>
                 </li>
                 <li>
-                    <a href="" class="nav-link link-dark">
+                    <a href="transport.html" class="nav-link link-dark">
                         <i class="bi bi-car-front-fill"></i>
                         Transport Emissions & Costs
                     </a>
@@ -59,15 +69,73 @@
         <div class="col-9 overflow-auto">
             <div class="row flex-grow-1">
                 <div class="col-12">
-                    <h1 class="mt-4 mb-4 mx-3"><strong>Home</strong></h1>
+                    <h1 class="mt-4 mb-4 mx-3"><strong>Hi, [user]!</strong></h1>
                 </div>
             </div>
             <div class="row flex-grow-1">
-                <div class="col-5">
+                <div class="col-3">
+                    <div class="card shadow ms-3">
+                        <div class="card-body text-center">
+                            <span><strong>Overall Score</strong></span><br>
+                            <img src="assets/images/circle1.png" alt="test" width="200" height="200">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row flex-grow-1 mt-4">
+                <div class="col-7">
                     <div class="card shadow ms-3">
                         <div class="card-body">
-                            <h3 class="mb-4">Updates & Announcements</h3>
-                            <textarea class="form-control" style="width: 100%; height: 53vh" readonly><?php echo $text_content; ?></textarea>
+                            <h3 class="mb-4">Profile Data</h3>
+                            <p><strong>Full Name:</strong> [full name]<br>
+                            <strong>Email:</strong> [email]<br></p>
+                            <p>
+                                <strong>Company (if applicable):</strong> [company]<br>
+                                <strong>Role/position (if applicable):</strong> [role]<br>
+                                <strong>Country:</strong> [country]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 ">
+                    <div class="card shadow me-3">
+                        <div class="card-body">
+                            <h3 class="mb-4">Profile Settings</h3>
+                            <button type="button" class="btn btn-primary mb-2">Change Name</button><br>
+                            <button type="button" class="btn btn-primary mb-2">Change Email</button><br>
+                            <button type="button" class="btn btn-primary mb-2">Change Password</button><br>
+                            <p class="mt-4 text-muted">Want to change your company, role, or account country? Contact us directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row flex-grow-1 my-4">
+                <div class="col-12">
+                    <div class="card shadow ms-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h3 class="mb-4">Contact</h3>
+                                    <p>
+                                        Keele University,<br>
+                                        Staffordshire,<br>
+                                        ST5 5BG
+                                    </p>
+                                </div>
+                                <div class="col-5">
+                                    <div class="card bg-light pt-3 ps-3 pe-3">
+                                        <strong>Contact Details</strong>
+                                        <p>
+                                            EnviroScan<br>
+                                            +44 01284 293824
+                                        </p>
+                                        <button type="button" class="btn btn-primary">Contact us</button><br>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>

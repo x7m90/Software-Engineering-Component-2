@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnviroScan</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f2f2f2;
+        }
+
+        .card {
+            border: none; /* Remove border */
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="container-fluid">
+    <div class="row flex-grow-1">
+        <div class="col-3 bg-light p-4 d-flex flex-column overflow-auto shadow" style="height: 114vh">
+            <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                <img src="assets/images/Logo.png" width="50px" height="50px">
+                <span class="mx-3 fs-5">EnviroScan</span>
+            </div>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="home.html" class="nav-link link-dark">
+                        <i class="bi bi-house-door-fill"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="nav-link link-dark">
+                        <i class="bi bi-thermometer-sun"></i>
+                        Climate Change Data
+                    </a>
+                </li>
+                <li>
+                    <a href="" class="nav-link link-dark">
+                        <i class="bi bi-cloud-fill"></i>
+                        Weather & Disaster Events
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link active">
+                        <i class="bi bi-graph-up"></i>
+                        Carbon Emission Monitoring
+                    </a>
+                </li>
+                <li>
+                    <a href="transport.html" class="nav-link link-dark">
+                        <i class="bi bi-car-front-fill"></i>
+                        Transport Emissions & Costs
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <p class="text-muted">[ username here ]</p> <!-- I'll properly implement later when login system is done -->
+        </div>
+
+        <!-- Below is example code -->
+        <div class="col-9 overflow-auto">
+            <div class="row flex-grow-1">
+                <div class="col-12">
+                    <h1 class="mt-4 mb-4 mx-3"><strong>Carbon Emission Monitoring</strong></h1>
+                </div>
+            </div>
+            <div class="row flex-grow-1">
+                <div class="col-5">
+                    <div class="card shadow ms-3">
+                        <div class="card-body">
+                            <h3 class="mb-4">Enter Activity Data</h3>
+                            <form>
+                                <div class="mb-1">
+                                    <label for="naturalGasInput" class="form-label">Monthly Natural Gas Consumption (cubic meters)</label>
+                                    <input type="number" class="form-control" id="naturalGasInput" placeholder="Enter consumption">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="gasolineInput" class="form-label">Monthly Gasoline Consumption (litres)</label>
+                                    <input type="number" class="form-control" id="gasolineInput" placeholder="Enter consumption">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="dieselInput" class="form-label">Monthly Diesel Consumption (litres)</label>
+                                    <input type="number" class="form-control" id="dieselInput" placeholder="Enter consumption">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="electricityInput" class="form-label">Monthly Electricity Usage (kWh)</label>
+                                    <input type="number" class="form-control" id="electricityInput" placeholder="Enter usage">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productionOutputInput" class="form-label">Annual Production Output (units)</label>
+                                    <input type="number" class="form-control" id="productionOutputInput" placeholder="Enter output">
+                                </div>
+                                <h3 class="mb-4">Enter Transport Data</h3>
+                                <div class="mb-1">
+                                    <label for="vehicleCountInput" class="form-label">Number of Vehicles in Fleet</label>
+                                    <input type="number" class="form-control" id="vehicleCountInput" placeholder="Enter number of vehicles">
+                                </div>
+                                <div class="mb-1">
+                                    <label for="avgVehicleMileageInput" class="form-label">Monthly Average Vehicle Mileage (per vehicle) (miles)</label>
+                                    <input type="number" class="form-control" id="avgVehicleMileageInput" placeholder="Enter mileage">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="businessTravelMileageInput" class="form-label">Business Travel Mileage (miles)</label>
+                                    <input type="number" class="form-control" id="businessTravelMileageInput" placeholder="Enter mileage">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card shadow ms-3 p-3">
+                                <h3>Current emission factors</h3>
+                                <div class="row">
+                                    <div class="card-body">
+                                        <p>
+                                            <strong>Natural gas combustion:</strong> 2.3 kg CO2 per cubic meter<br>
+                                            <strong>Gasoline:</strong> 2.31 kg CO2 per liter<br>
+                                            <strong>Diesel:</strong> 2.68 kg CO2 per liter<br>
+                                            <strong>Electricity (grid average):</strong> 0.5 kg CO2 per kWh<br>
+                                            <strong>Vehicle transportation (average):</strong> 0.2 kg CO2 per km<br>
+                                            <strong>Supplier transportation (average):</strong> 0.1 kg CO2 per km
+                                        </p>
+                                        <span class="text-muted">Data collected via [ api source ]</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card shadow  p-3 me-3">
+                                <h3>Results</h3>
+                                <div class="row">
+                                    <div class="card-body">
+                                        <div class="card bg-light pt-3 ps-3 pe-3 mb-3">
+                                            <h5>Scope 1</h5>
+                                            <p>
+                                                <strong>Natural gas emissions:</strong> 1150 kg CO2<br>
+                                                <strong>Gasoline emissions:</strong> 2310 kg CO2<br>
+                                                <strong>Diesel emissions:</strong> 1340 kg CO2
+                                            </p>
+                                            <p>
+                                                <strong>Total Scope 1 emissions:</strong> 4800 kg CO2
+                                            </p>
+                                        </div>
+                                        <div class="card bg-light pt-3 ps-3 pe-3 mb-3">
+                                            <h5>Scope 2</h5>
+                                            <p>
+                                                <strong>Electricity emissions:</strong> 25000 kg CO2
+                                            </p>
+                                        </div>
+                                        <div class="card bg-light pt-3 ps-3 pe-3">
+                                            <h5>Scope 3</h5>
+                                            <p>
+                                                <strong>Business travel emissions:</strong> 4000 kg CO2<br>
+                                                <strong>Supply  chain emissions:</strong> 10000 kg CO2
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card shadow ms-3 p-3 mt-4 me-3">
+                                <h3>Scopes Explained</h3>
+                                <p>
+                                    <strong>Scope 1</strong><br>
+                                    Direct emissions from owned or controlled sources (e.g., fuel combustion, process emissions).
+                                </p>
+                                <p>
+                                    <strong>Scope 2</strong><br>
+                                    Indirect emissions from purchased electricity, heat, or steam.
+                                </p>
+                                <p>
+                                    <strong>Scope 3</strong><br>
+                                    Indirect emissions from activities such as transportation, business travel, supply chain, and waste disposal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card shadow ms-3 mt-4 mb-4">
+                            <div class="card-body">
+                                <h3>Export data</h3>
+                                <div class="mt-3">
+                                    <button type="button" class="btn btn-danger">PDF file</button>
+                                    <button type="button" class="btn btn-success">CSV file</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>

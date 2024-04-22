@@ -83,16 +83,8 @@
                             <h3 class="mb-4">Enter Vehicle Details</h3>
                             <form>
                                 <div class="mb-1">
-                                    <label for="makeInput" class="form-label">Make</label>
-                                    <input type="text" class="form-control" id="makeInput" placeholder="Enter make">
-                                </div>
-                                <div class="mb-1">
-                                    <label for="modelInput" class="form-label">Model</label>
-                                    <input type="text" class="form-control" id="modelInput" placeholder="Enter model">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="yearInput" class="form-label">Year</label>
-                                    <input type="number" class="form-control" id="yearInput" placeholder="Enter year" min="1900" max="2099">
+                                    <label for="regInput" class="form-label">Registration number</label>
+                                    <input type="text" class="form-control" id="regInput" placeholder="Enter registration number">
                                 </div>
                                 <div class="mb-1">
                                     <label for="mpgInput" class="form-label">Fuel consumption (MPG)</label>
@@ -111,21 +103,7 @@
                             </form>
                         </div>
                     </div>
-                </div>
-                <div class="col-3">
-                    <div class="card shadow ms-3 p-3">
-                        <h3>Current emission factors</h3>
-                        <div class="row">
-                            <div class="card-body">
-                                <p>
-                                    <strong>Vehicle transportation (average):</strong> 0.25 kg CO2 per mile<br>
-                                </p>
-                                <span class="text-muted">Data collected via [ api source ] by specific vehicle</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-4">
+                <div class="col-7">
                     <div class="card shadow ms-3 me-3 p-3">
                         <h3>Results & Comparison</h3>
                         <div class="row">
@@ -137,6 +115,9 @@
                                         <strong>Route mileage:</strong> 200 miles<br>
                                         <strong>Fuel consumption:</strong> 25 miles per gallon (mpg)<br>
                                         <strong>Fuel cost:</strong> £1.30
+                                    </p>
+                                    <p>
+                                        <strong>Average transport emission (for this specific vehicle):</strong> 0.25 kg CO2 per mile
                                     </p>
                                     <p>
                                         <strong>Total Fuel Consumption for the Route:</strong> 8 gallons<br>
@@ -151,6 +132,9 @@
                                         <strong>Route mileage:</strong> 150 miles<br>
                                         <strong>Fuel consumption:</strong> 30 miles per gallon (mpg)<br>
                                         <strong>Fuel cost:</strong> £1.40
+                                    </p>
+                                    <p>
+                                        <strong>Average transport emission (for this specific vehicle):</strong> 0.5 kg CO2 per mile
                                     </p>
                                     <p>
                                         <strong>Total Fuel Consumption for the Route:</strong> 5 gallons<br>
